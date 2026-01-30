@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Main page</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Header</h1>
+  <p>Главная страница</p>
+
+  <!-- Consent banner -->
+  <div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:#111;color:#fff;padding:12px;text-align:center;">
+    This website uses Yandex.Metrica for anonymous usage statistics.
+    <a href="privacy-metrica.html" target="_blank">Privacy Policy</a>
+    <button id="accept-consent">Accept</button>
+  </div>
+
+  <footer>
+    <small>
+      This website uses Yandex.Metrica for basic usage analytics.
+      Analytics cookies and IP-based data are processed only after user consent.
+      No session recordings or profiling are used.
+      <a href="privacy-metrica.html">Privacy Policy</a>
+    </small>
+  </footer>
+
+  <script>
+    // const METRICA_ID = 12345678; 
+
+    function loadMetrica() {
+      const script = document.createElement('script');
+      script.src = "https://mc.yandex.ru/metrika/tag.js";
+      script.async = true;
+      document.head.appendChild(script);
+
+      script.onload = function () {
+        ym(METRICA_ID, "init", {
+          clickmap: true,
+          trackLinks: true,
+          accurateTrackBounce: true,
+          webvisor: false,        
+          trackHash: false
+        });
+      };
+    }
+
+    // accept click
+    document.getElementById('accept-consent').onclick = function () {
+      localStorage.setItem('analytics_consent', 'true');
+      document.getElementById('cookie-banner').remove();
+      loadMetrica();
+    };
+
+    // already accepted
+    if (localStorage.getItem('analytics_consent') === 'true') {
+      document.getElementById('cookie-banner')?.remove();
+      loadMetrica();
+    }
+  </script>
+
+</body>
+</html>
