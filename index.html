@@ -4,16 +4,36 @@
   <meta charset="UTF-8">
   <title>Main page</title>
   
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MSNCX4LZHG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-MSNCX4LZHG', {
+      'anonymize_ip': true,      
+      'allow_google_signals': false 
+    });
+  </script>
+  
   <script defer src="https://cloud.umami.is/script.js" data-website-id="b07be116-6c88-4671-b429-857fe9f3b642"></script>
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>Header</h1>
   <p>Главная страница</p>
 
   <footer>
-  <small>
-    This website uses Umami analytics and does not collect personal data.
-  </small>
+    <small>
+      This website uses:
+      <ul>
+        <li>Google Analytics with anonymized IP addresses; no personal data is collected without consent.</li>
+        <li>Umami analytics; no cookies and no personal data are collected.</li>
+      </ul>
+      By using this site, you agree to the anonymous collection of usage data for analytics purposes.
+    </small>
   </footer>
 
 </body>
